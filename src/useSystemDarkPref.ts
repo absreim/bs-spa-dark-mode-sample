@@ -2,7 +2,7 @@ import {useSyncExternalStore} from 'react';
 
 const darkModeQueryList = window.matchMedia('(prefers-color-scheme: dark)')
 
-export default function useDarkModePref() {
+export default function useSystemDarkPref() {
     return useSyncExternalStore(subscribe, getSnapshot);
 }
 
