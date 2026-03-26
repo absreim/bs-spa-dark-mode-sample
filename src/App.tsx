@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSystemDarkPref from "./useSystemDarkPref.ts";
 import { getInitThemeOptionName } from "./themeLs.ts";
 import useEffectiveTheme from "./useEffectiveTheme.ts";
@@ -13,9 +13,14 @@ function App() {
     getInitThemeOptionName(),
   );
   const effectiveTheme = useEffectiveTheme(themeOptionName, systemDarkPref);
+  useEffect(() => {
+    document
+      .getElementsByTagName("html")[0]
+      .setAttribute("data-bs-theme", effectiveTheme);
+  }, [effectiveTheme])
 
   return (
-    <main data-bs-theme={effectiveTheme}>
+    <main>
       <ButtonGroup>
         {Object.keys(themeOptionLabels).map((name) => (
           <ToggleButton
