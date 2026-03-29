@@ -15,4 +15,8 @@ export const getInitThemeOptionName: () => ThemeOptionName = () => {
       return "system";
     }
   }
-}
+};
+
+export const setThemeOptionName = (name: ThemeOptionName) => {
+  localStorage.setItem(THEME_LS_KEY, name);
+};

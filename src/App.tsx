@@ -1,6 +1,9 @@
 import { useState } from "react";
 import useSystemDarkPref from "./useSystemDarkPref.ts";
-import { getInitThemeOptionName } from "./themeLs.ts";
+import {
+  getInitThemeOptionName,
+  setThemeOptionName as setLsThemeOptionName,
+} from "./themeLs.ts";
 import useEffectiveTheme from "./useEffectiveTheme.ts";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { themeOptionLabels } from "./models.ts";
@@ -35,7 +38,10 @@ function App() {
             value={name}
             name="theme-selector"
             checked={themeOptionName === name}
-            onChange={() => setThemeOptionName(name as ThemeOptionName)}
+            onChange={() => {
+              setThemeOptionName(name as ThemeOptionName);
+              setLsThemeOptionName(name as ThemeOptionName);
+            }}
             variant="outline-primary"
           >
             {themeOptionLabels[name as ThemeOptionName]}
