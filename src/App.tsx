@@ -1,10 +1,8 @@
 import { useState } from "react";
-import useSystemDarkPref from "./useSystemDarkPref.ts";
 import {
   getInitThemeOptionName,
   setThemeOptionName as setLsThemeOptionName,
 } from "./themeLs.ts";
-import useEffectiveTheme from "./useEffectiveTheme.ts";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { themeOptionLabels } from "./models.ts";
 import ToggleButton from "react-bootstrap/ToggleButton";
@@ -12,14 +10,12 @@ import type { ThemeOptionName } from "./types.ts";
 import Card from "react-bootstrap/Card";
 
 function App() {
-  const systemDarkPref = useSystemDarkPref();
   const [themeOptionName, setThemeOptionName] = useState(
     getInitThemeOptionName(),
   );
-  const effectiveTheme = useEffectiveTheme(themeOptionName, systemDarkPref);
 
   return (
-    <main data-bs-theme={effectiveTheme}>
+    <main>
       <Card>
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
@@ -41,6 +37,9 @@ function App() {
             onChange={() => {
               setThemeOptionName(name as ThemeOptionName);
               setLsThemeOptionName(name as ThemeOptionName);
+              (
+                window as Window & typeof globalThis & { syncTheme: () => void }
+              ).syncTheme();
             }}
             variant="outline-primary"
           >
