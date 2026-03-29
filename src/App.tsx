@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  getInitThemeOptionName,
+  getThemeOptionName,
   setThemeOptionName as setLsThemeOptionName,
 } from "./themeLs.ts";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
@@ -8,11 +8,16 @@ import { themeOptionLabels } from "./models.ts";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import type { ThemeOptionName } from "./types.ts";
 import Card from "react-bootstrap/Card";
+import useExtChangedLsValue from "./useExtChangedLsValue.ts";
 
 function App() {
   const [themeOptionName, setThemeOptionName] = useState(
-    getInitThemeOptionName(),
+    getThemeOptionName(),
   );
+  const lsThemeOptionName = useExtChangedLsValue();
+  useEffect(() => {
+    setThemeOptionName(lsThemeOptionName);
+  }, [lsThemeOptionName])
 
   return (
     <main>

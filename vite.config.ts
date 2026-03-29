@@ -8,13 +8,13 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // Optional: Silence specific Sass deprecation warnings
-        silenceDeprecations: [
-          "import",
-          "color-functions",
-        ],
+        silenceDeprecations: ["import", "color-functions"],
         // Optional: Use quietDeps to silence all warnings from files within node_modules
         quietDeps: true,
       },
     },
+  },
+  define: {
+    __THEME_LS_KEY__: JSON.stringify("theme"),
   },
 });
