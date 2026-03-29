@@ -13,8 +13,5 @@ export default defineConfig({
         quietDeps: true,
       },
     },
-  },
-  define: {
-    __THEME_LS_KEY__: JSON.stringify("theme"),
-  },
+  }
 });

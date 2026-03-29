@@ -1,7 +1,8 @@
 import type { ThemeOptionName } from "./types.ts";
+import { THEME_LS_KEY } from "./models.ts";
 
 export const getThemeOptionName: () => ThemeOptionName = () => {
-  const lsValue = localStorage.getItem(__THEME_LS_KEY__);
+  const lsValue = localStorage.getItem(THEME_LS_KEY);
   switch (lsValue) {
     case "light": {
       return "light";
@@ -16,5 +17,5 @@ export const getThemeOptionName: () => ThemeOptionName = () => {
 };
 
 export const setThemeOptionName = (name: ThemeOptionName) => {
-  localStorage.setItem(__THEME_LS_KEY__, name);
+  localStorage.setItem(THEME_LS_KEY, name);
 };

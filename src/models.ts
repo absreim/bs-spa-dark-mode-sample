@@ -5,3 +5,5 @@ export const themeOptionLabels: Record<ThemeOptionName, string> = {
   dark: "Dark",
   system: "System",
 }
+
+export const THEME_LS_KEY = "theme";
