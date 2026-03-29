@@ -1,13 +1,13 @@
 "use strict";
 
 const syncTheme = () => {
-  let currentTheme = "auto";
+  let currentTheme = "system";
   const storedTheme = localStorage.getItem("theme");
   if (["dark", "light"].includes(storedTheme)) {
     currentTheme = storedTheme;
   }
 
-  if (currentTheme === "auto") {
+  if (currentTheme === "system") {
     document.documentElement.setAttribute(
       "data-bs-theme",
       window.matchMedia("(prefers-color-scheme: dark)").matches

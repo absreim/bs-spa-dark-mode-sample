@@ -1,12 +1,11 @@
 # bs-spa-dark-mode-sample
 
 This is a code sample project based on the Vite starter template for demonstrating how a dark mode solution for a React
-Single Page App (SPA) might look. In particular, this solution involves conditionally rendering the `data-bs-theme`
-attribute used by Bootstrap.
+Single Page App (SPA) might look.
 
-Unfortunately, this solution is far from satisfactory because the top level `html` element used to set the color theme
-globally is outside of the rendering tree for Vite SPAs. Running the project will demonstrate this fact. The color mode
-toggle only works for the card component of the page and not the background.
+This solution involves manipulating the DOM in an uncontrolled manner, which is in itself less than ideal because
+uncontrolled logic tends to be harder to reason about. However, implementing this way allows for dark mode to be applied
+to the entire app, not just under the React root `div` element.
 
 ## Getting Started
 
